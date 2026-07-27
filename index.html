@@ -1,0 +1,1385 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="lang-zh">韩恒机电有限公司</title>
+    <title class="lang-en">Hanheng Electromechanical Co., Ltd.</title>
+    <!-- 使用SF风格字体 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+    <style>
+        /* ===== 全局重置 & 基础 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== 顶部通知条 ===== */
+        .top-bar {
+            background: #f5f5f7;
+            padding: 8px 0;
+            font-size: 13px;
+            color: #6e6e73;
+            text-align: center;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+        .top-bar span {
+            margin: 0 12px;
+        }
+
+        /* ===== 导航栏 ===== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1d1d1f;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: #007aff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #1d1d1f;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #007aff;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #007aff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            background: #f5f5f7;
+            border-radius: 20px;
+            padding: 4px;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #6e6e73;
+            transition: all 0.2s;
+        }
+
+        .lang-switch button.active {
+            background: #ffffff;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .lang-switch button:hover {
+            color: #1d1d1f;
+        }
+
+        /* 移动端汉堡 (简单) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: #1d1d1f;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        /* ===== 搜索框 ===== */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 4px 12px;
+            transition: all 0.2s;
+        }
+
+        .search-box:focus-within {
+            background: #e5e5ea;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 8px 8px;
+            font-size: 14px;
+            outline: none;
+            width: 140px;
+            color: #1d1d1f;
+        }
+
+        .search-box input::placeholder {
+            color: #8e8e93;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #8e8e93;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: #007aff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #007aff;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #0066d9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1d1d1f;
+            border: 1.5px solid #d2d2d7;
+        }
+
+        .btn-outline:hover {
+            border-color: #1d1d1f;
+            background: #f5f5f7;
+        }
+
+        /* ===== 通用标题 ===== */
+        .section-title {
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #6e6e73;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 56px;
+        }
+
+        /* ===== 产品区域 ===== */
+        .products {
+            padding: 80px 0;
+            background: #fbfbfd;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 0 0 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 0 1px rgba(0,0,0,0.06);
+            opacity: 0;
+            transform: translateY(30px);
+            overflow: hidden;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.06);
+        }
+
+        .product-card .product-img {
+            background: #fafafa;
+            padding: 32px 24px 20px;
+            margin-bottom: 24px;
+        }
+        
+        .product-card .product-img svg {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .product-card .product-img img {
+            width: 100%;
+            max-width: 160px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-body .modal-img-area img.modal-product-img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        
+        .product-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 0 24px;
+            margin-bottom: 8px;
+        }
+        
+        .product-card p {
+            padding: 0 24px;
+            font-size: 14px;
+            line-height: 1.45;
+            color: #6e6e73;
+            margin-bottom: 14px;
+        }
+        
+        .product-specs {
+            padding: 0 24px;
+            font-size: 12px;
+            color: #8e8e93;
+            letter-spacing: 0.3px;
+            margin-bottom: 10px;
+        }
+        
+        .product-specs .spec-dot {
+            margin: 0 5px;
+            color: #c7c7cc;
+        }
+        
+        .product-price {
+            padding: 0 24px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+        }
+
+        .product-price span {
+            font-size: 13px;
+            font-weight: 400;
+            color: #8e8e93;
+        }
+        
+
+        /* ===== 动态区域 ===== */
+        .news {
+            padding: 60px 0;
+            background: #fafafa;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .news-item {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #f0f0f2;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .news-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .news-item:hover {
+            border-color: #d2d2d7;
+        }
+
+        .news-item .date {
+            font-size: 13px;
+            color: #8e8e93;
+            margin-bottom: 8px;
+        }
+
+        .news-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .news-item p {
+            color: #6e6e73;
+            font-size: 15px;
+        }
+
+        /* ===== 客户评价 ===== */
+        .testimonials {
+            padding: 60px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #fafafa;
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid #f0f0f2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s;
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card .stars {
+            color: #ffb340;
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 16px;
+            font-style: italic;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            font-size: 14px;
+            color: #6e6e73;
+        }
+
+        /* ===== 联系页（嵌入到首页下方示例） ===== */
+        .contact-section {
+            padding: 60px 0;
+            background: #fafafa;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: #6e6e73;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .contact-info .detail {
+            margin-top: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #e5e5ea;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border: 1.5px solid #e5e5ea;
+            font-size: 15px;
+            margin-bottom: 16px;
+            background: #ffffff;
+            transition: border 0.2s;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #007aff;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        /* ===== 地图占位 ===== */
+        .map-placeholder {
+            margin-top: 24px;
+            background: #e5e5ea;
+            border-radius: 20px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6e6e73;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            padding: 40px 0 24px;
+            margin-top: 20px;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #8e8e93;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer .social {
+            display: flex;
+            gap: 24px;
+            margin: 8px 0;
+        }
+
+        .footer .copy {
+            font-size: 14px;
+            color: #6e6e73;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid #e5e5ea;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .search-box input {
+                width: 100px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                padding: 12px 16px;
+            }
+
+            .search-box input {
+                width: 80px;
+            }
+        }
+
+        /* ===== 滚动渐入辅助 ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Product detail modal ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            padding: 24px;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 24px;
+            position: relative;
+            max-width: 780px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.15);
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .modal-overlay.active .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.04);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 1;
+        }
+        .modal-close:hover { background: rgba(0,0,0,0.08); }
+        .modal-close svg { width: 18px; height: 18px; color: #1d1d1f; }
+
+        .modal-body {
+            padding: 40px;
+        }
+        .modal-body .modal-img-area {
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .modal-body h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+        .modal-body .modal-desc {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .modal-variant-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e5ea;
+        }
+        .modal-variant-table thead th {
+            background: #f5f5f7;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6e6e73;
+            text-transform: none;
+            letter-spacing: 0.3px;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #e5e5ea;
+            white-space: nowrap;
+        }
+        .modal-variant-table tbody td {
+            font-size: 14px;
+            padding: 10px 14px;
+            border-bottom: 1px solid #f0f0f2;
+            color: #1d1d1f;
+        }
+        .modal-variant-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .modal-variant-table tbody tr:hover td {
+            background: #fafafa;
+        }
+        .modal-variant-table .price-cell {
+            font-weight: 600;
+            color: #007aff;
+            white-space: nowrap;
+        }
+
+        .modal-extra-notes {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #8e8e93;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .modal-body { padding: 24px; }
+            .modal-body h2 { font-size: 22px; }
+            .modal-variant-table { font-size: 12px; }
+            .modal-variant-table thead th,
+            .modal-variant-table tbody td { padding: 8px 10px; font-size: 12px; }
+        }
+
+    </style>
+    <meta name="description" content="韩恒机电 - 专业直流潜水泵制造商，提供有刷/无刷潜水泵、不锈钢泵、深井泵等全系列产品，品质可靠，性能卓越。Hanheng Electric - DC Submersible Pump Manufacturer." />
+    <meta name="keywords" content="韩恒机电,韩恒,潜水泵,直流潜水泵,无刷潜水泵,深井泵,Hanheng,submersible pump,DC pump" />
+    <meta name="author" content="Hanheng Electromechanical Co., Ltd." />
+    <link rel="canonical" href="https://www.hanheng.xin/" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="韩恒机电 · Hanheng Electromechanical" />
+    <meta property="og:description" content="专业直流潜水泵制造商，品质可靠，性能卓越。" />
+    <meta property="og:url" content="https://www.hanheng.xin/" />
+    <meta property="og:type" content="website" /></head>
+<body>
+
+    <!-- ===== 顶部通知 ===== -->
+    <div class="top-bar">
+        <span class="lang-zh">📞 咨询热线：15355868382</span>
+        <span class="lang-en">📞 Hotline: +86 15355868382</span>
+        <span>|</span>
+        <span class="lang-zh">📍 温岭市大溪镇凯利达鞋业里2号楼</span>
+        <span class="lang-en">📍 Building 2, Kailida Shoes, Daxi Town, Wenling</span>
+    </div>
+
+    <!-- ===== 导航 ===== -->
+    <nav class="navbar">
+        <div class="logo lang-zh"><svg class="logo-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/><circle cx="22" cy="22" r="16.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 13v18M29 13v18M15 22h14" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 28l-1.5 2.5h3L20 33" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/></svg>韩恒<span>机电</span></div>
+        <div class="logo lang-en" style="color:#fff;"><svg class="logo-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/><circle cx="22" cy="22" r="16.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 13v18M29 13v18M15 22h14" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 28l-1.5 2.5h3L20 33" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/></svg>Hanheng<span style="color:#007aff;">Electro</span></div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="lang-zh">首页</a><a href="#home" class="lang-en">Home</a></li>
+            <li><a href="#about" class="lang-zh">关于我们</a><a href="#about" class="lang-en">About</a></li>
+            <li><a href="#products" class="lang-zh">产品中心</a><a href="#products" class="lang-en">Products</a></li>
+            <li><a href="#news" class="lang-zh">最新动态</a><a href="#news" class="lang-en">News</a></li>
+            <li><a href="#contact" class="lang-zh">联系我们</a><a href="#contact" class="lang-en">Contact</a></li>
+        </ul>
+
+        <div style="display:flex; align-items:center; gap:12px;">
+            <div class="search-box">
+                <input type="text" placeholder="搜索..." id="searchInput" />
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="lang-switch">
+                <button class="active" data-lang="zh">中文</button>
+                <button data-lang="en">EN</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="lang-zh">韩恒机电 · 匠心制造</h1>
+            <h1 class="lang-en">Hanheng · Precision Machinery</h1>
+            <p class="lang-zh">专注机电设备研发与生产，为客户提供高品质的工业解决方案。</p>
+            <p class="lang-en">Focus on R&D and manufacturing of electromechanical equipment, providing high-quality industrial solutions.</p>
+            <div class="btn-group">
+                <a href="#products" class="btn btn-primary lang-zh">查看产品</a>
+                <a href="#products" class="btn btn-primary lang-en">View Products</a>
+                <a href="#contact" class="btn btn-outline lang-zh">联系我们</a>
+                <a href="#contact" class="btn btn-outline lang-en">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 关于我们（简版） ===== -->
+    <section id="about" style="padding:40px 0; border-top:1px solid #f0f0f2;">
+        <div class="container">
+            <h2 class="section-title lang-zh">关于韩恒</h2>
+            <h2 class="section-title lang-en">About Hanheng</h2>
+            <p style="max-width:760px; margin:0 auto; text-align:center; color:#6e6e73; font-size:17px;" class="lang-zh">
+                韩恒机电有限公司位于浙江温岭，致力于机电设备的创新与制造。我们以可靠品质和专业技术服务赢得客户信赖。
+            </p>
+            <p style="max-width:760px; margin:0 auto; text-align:center; color:#6e6e73; font-size:17px;" class="lang-en">
+                Hanheng Electromechanical Co., Ltd. is located in Wenling, Zhejiang, dedicated to innovation and manufacturing of electromechanical equipment. We win customers' trust with reliable quality and professional service.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 产品中心 ===== -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title lang-zh">核心产品</h2>
+            <h2 class="section-title lang-en">Core Products</h2>
+            <p class="section-sub lang-zh">直流潜水泵全系列 · 品质可靠 · 性能卓越</p>
+            <p class="section-sub lang-en">DC Submersible Pump Series · Reliable · High Performance</p>
+
+            <div class="product-grid">
+                <!-- Product 1: Brushed DC Submersible Pump -->
+<div class="product-card fade-in" data-product="0">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8e8ed"/><stop offset="100%" stop-color="#d1d1d6"/></linearGradient><ellipse cx="100" cy="178" rx="55" ry="5" fill="rgba(0,0,0,0.05)"/><rect x="60" y="38" width="80" height="120" rx="16" fill="url(#sc0)"/><rect x="52" y="24" width="96" height="20" rx="10" fill="#b0b0b8"/><circle cx="100" cy="115" r="24" fill="rgba(0,122,255,0.08)"/><path d="M93 129v-6h-4v-3h4v-5h2v5h4v3h-4v6h-2z" fill="#007aff"/><rect x="80" y="145" width="40" height="10" rx="5" fill="#8e8e93"/></svg>
+                    </div>
+                    <h3 class="lang-zh">直流有刷潜水泵</h3>
+                    <h3 class="lang-en">Brushed DC Submersible Pump</h3>
+                    <p class="lang-zh">鱼缸换水、小型喷泉、临时排水。经济实用，多种电压可选。</p>
+                    <p class="lang-en">Fish tank, fountain, drainage. Cost-effective, multiple voltages.</p>
+                    <div class="product-specs">
+                        <span>5–10 m³/h</span><span class="spec-dot">·</span><span>5–18m</span><span class="spec-dot">·</span><span>12V/24V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥60 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥60</div>
+                </div>
+
+                <!-- Product 2: Brushless DC Submersible Pump -->
+<div class="product-card fade-in" data-product="1">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d1d1d6"/><stop offset="100%" stop-color="#aeaeb8"/></linearGradient><ellipse cx="100" cy="178" rx="52" ry="5" fill="rgba(0,0,0,0.05)"/><rect x="55" y="28" width="90" height="135" rx="14" fill="url(#sc1)"/><rect x="47" y="16" width="106" height="20" rx="10" fill="#636366"/><circle cx="100" cy="105" r="26" fill="rgba(0,122,255,0.08)"/><path d="M93 121v-6h-4v-3h4v-5h2v5h4v3h-4v6h-2z" fill="#007aff"/><rect x="75" y="145" width="50" height="12" rx="6" fill="#636366"/></svg>
+                    </div>
+                    <h3 class="lang-zh">直流无刷潜水泵</h3>
+                    <h3 class="lang-en">Brushless DC Submersible Pump</h3>
+                    <p class="lang-zh">地暖循环、太阳能灌溉、汽车散热。高效节能，长寿命。</p>
+                    <p class="lang-en">Floor heating, solar irrigation, heat dissipation. Efficient, long life.</p>
+                    <div class="product-specs">
+                        <span>20 m³/h</span><span class="spec-dot">·</span><span>20–30m</span><span class="spec-dot">·</span><span>48V/72V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥168 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥168</div>
+                </div>
+
+                <!-- Product 3: Brushless DC Stainless Steel -->
+<div class="product-card fade-in" data-product="2">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eaeaea"/><stop offset="100%" stop-color="#c0c0c8"/></linearGradient><ellipse cx="100" cy="178" rx="52" ry="5" fill="rgba(0,0,0,0.05)"/><rect x="55" y="24" width="90" height="140" rx="18" fill="url(#sc2)"/><rect x="47" y="12" width="106" height="22" rx="11" fill="#8e8e93"/><ellipse cx="100" cy="45" rx="18" ry="3" fill="rgba(199,199,204,0.4)"/><circle cx="100" cy="105" r="26" fill="rgba(52,199,89,0.08)"/><path d="M88 113l-4-4 3-3 5 5 10-10 3 3-12 12-5-3z" fill="#34c759"/><rect x="75" y="148" width="50" height="12" rx="6" fill="#8e8e93"/></svg>
+                    </div>
+                    <h3 class="lang-zh">不锈钢无刷潜水泵</h3>
+                    <h3 class="lang-en">Brushless DC Stainless Steel</h3>
+                    <p class="lang-zh">光伏提水、深层地下水、大规模灌溉。耐腐蚀，坚固耐用。</p>
+                    <p class="lang-en">PV water lifting, deep groundwater, large-scale irrigation. Corrosion-resistant.</p>
+                    <div class="product-specs">
+                        <span>20 m³/h</span><span class="spec-dot">·</span><span>18–22m</span><span class="spec-dot">·</span><span>48V/72V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥133 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥133</div>
+                </div>
+
+                <!-- Product 4: Dual-purpose Submersible Pump -->
+<div class="product-card fade-in" data-product="3">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e5e5ea"/><stop offset="100%" stop-color="#c7c7cc"/></linearGradient><ellipse cx="100" cy="178" rx="52" ry="5" fill="rgba(0,0,0,0.05)"/><rect x="58" y="32" width="84" height="130" rx="14" fill="url(#sc3)"/><rect x="48" y="18" width="104" height="20" rx="10" fill="#8e8e93"/><path d="M80 55c-10 0-18 8-18 18v45c0 10 8 18 18 18h40c10 0 18-8 18-18V73c0-10-8-18-18-18H80z" fill="rgba(174,174,184,0.3)"/><circle cx="100" cy="105" r="24" fill="rgba(0,122,255,0.08)"/><path d="M93 119v-5h-4v-3h4v-4h2v4h4v3h-4v5h-2z" fill="#007aff"/><rect x="78" y="145" width="44" height="10" rx="5" fill="#8e8e93"/></svg>
+                    </div>
+                    <h3 class="lang-zh">双用途潜水泵</h3>
+                    <h3 class="lang-en">Dual-purpose Submersible Pump</h3>
+                    <p class="lang-zh">污水与清水双用，水培植物、模型冷却、微缩景观。</p>
+                    <p class="lang-en">Sewage & clean water. Hydroponics, model cooling, mini landscapes.</p>
+                    <div class="product-specs">
+                        <span>8–10 m³/h</span><span class="spec-dot">·</span><span>8–10m</span><span class="spec-dot">·</span><span>12–72V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥100 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥100</div>
+                </div>
+
+                <!-- Product 5: Permanent Magnet Mini Pump -->
+<div class="product-card fade-in" data-product="4">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0f0f5"/><stop offset="100%" stop-color="#d8d8dd"/></linearGradient><ellipse cx="100" cy="178" rx="48" ry="5" fill="rgba(0,0,0,0.04)"/><rect x="64" y="50" width="72" height="110" rx="12" fill="url(#sc4)"/><rect x="56" y="36" width="88" height="18" rx="9" fill="#aeaeb8"/><circle cx="100" cy="105" r="22" fill="rgba(255,149,0,0.08)"/><path d="M93 119v-4h-4v-3h4v-4h2v4h4v3h-4v4h-2z" fill="#ff9500"/><rect x="78" y="140" width="44" height="10" rx="5" fill="#8e8e93"/></svg>
+                    </div>
+                    <h3 class="lang-zh">永磁迷你潜水泵</h3>
+                    <h3 class="lang-en">Permanent Magnet Mini Pump</h3>
+                    <p class="lang-zh">菜园浇水、土地灌溉、播种。小巧便携，高效耐用。</p>
+                    <p class="lang-en">Garden watering, land irrigation, seeding. Compact, efficient, durable.</p>
+                    <div class="product-specs">
+                        <span>5–8 m³/h</span><span class="spec-dot">·</span><span>10–18m</span><span class="spec-dot">·</span><span>12V/24V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥85 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥85</div>
+                </div>
+
+                <!-- Product 6: Brushless Deep Well Pump -->
+<div class="product-card fade-in" data-product="5">
+                    <div class="product-img">
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><linearGradient id="sc5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8d8dd"/><stop offset="100%" stop-color="#b0b0b8"/></linearGradient><ellipse cx="100" cy="178" rx="48" ry="5" fill="rgba(0,0,0,0.05)"/><rect x="70" y="16" width="60" height="148" rx="8" fill="url(#sc5)"/><rect x="62" y="8" width="76" height="14" rx="7" fill="#636366"/><rect x="76" y="38" width="48" height="6" rx="3" fill="#8e8e93"/><rect x="78" y="50" width="44" height="5" rx="2.5" fill="#8e8e93"/><rect x="78" y="62" width="44" height="5" rx="2.5" fill="#8e8e93"/><circle cx="100" cy="108" r="24" fill="rgba(255,59,48,0.08)"/><path d="M108 96l-10 10-4-4-3 3 7 7 14-14-4-2z" fill="#ff3b30"/><rect x="78" y="148" width="44" height="10" rx="5" fill="#636366"/></svg>
+                    </div>
+                    <h3 class="lang-zh">无刷深井潜水泵</h3>
+                    <h3 class="lang-en">Brushless Deep Well Pump</h3>
+                    <p class="lang-zh">深井提水、灌溉。超高扬程，适合深层地下水抽取。</p>
+                    <p class="lang-en">Deep well lifting, irrigation. Ultra-high head for deep groundwater.</p>
+                    <div class="product-specs">
+                        <span>18–20 m³/h</span><span class="spec-dot">·</span><span>60–75m</span><span class="spec-dot">·</span><span>48V/64V</span>
+                    </div>
+                    <div class="product-price lang-zh">¥200 <span>起</span></div>
+                    <div class="product-price lang-en"><span>From</span> ¥200</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 最新动态 ===== -->
+    <section class="news" id="news">
+        <div class="container">
+            <h2 class="section-title lang-zh">最新动态</h2>
+            <h2 class="section-title lang-en">Latest News</h2>
+            <p class="section-sub lang-zh">了解韩恒机电的最新进展与行业资讯</p>
+            <p class="section-sub lang-en">Stay updated with Hanheng's latest developments</p>
+
+            <div class="news-grid">
+                <div class="news-item fade-in">
+                    <div class="date">2026-07-18</div>
+                    <h4 class="lang-zh">韩恒机电通过ISO9001认证</h4>
+                    <h4 class="lang-en">Hanheng Passed ISO9001 Certification</h4>
+                    <p class="lang-zh">公司顺利通过质量管理体系认证，品质再上新台阶。</p>
+                    <p class="lang-en">The company successfully passed the quality management system certification, reaching a new level of quality.</p>
+                </div>
+                <div class="news-item fade-in">
+                    <div class="date">2026-07-10</div>
+                    <h4 class="lang-zh">新款智能控制柜即将上市</h4>
+                    <h4 class="lang-en">New Smart Control Cabinet Coming Soon</h4>
+                    <p class="lang-zh">集成物联网功能，实现设备远程运维。</p>
+                    <p class="lang-en">Integrated IoT functions for remote equipment operation and maintenance.</p>
+                </div>
+                <div class="news-item fade-in">
+                    <div class="date">2026-06-28</div>
+                    <h4 class="lang-zh">参加2026国际工业博览会</h4>
+                    <h4 class="lang-en">Participating in 2026 International Industry Expo</h4>
+                    <p class="lang-zh">诚邀新老客户莅临展位交流合作。</p>
+                    <p class="lang-en">We sincerely invite new and old customers to visit our booth for cooperation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 客户评价 ===== -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title lang-zh">客户评价</h2>
+            <h2 class="section-title lang-en">Testimonials</h2>
+            <p class="section-sub lang-zh">来自合作伙伴的真实反馈</p>
+            <p class="section-sub lang-en">Real feedback from our partners</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="lang-zh">“韩恒的减速机质量稳定，售后服务响应及时，值得长期合作。”</blockquote>
+                    <blockquote class="lang-en">"Hanheng's reducers are stable in quality, and after-sales service responds promptly. Worth long-term cooperation."</blockquote>
+                    <div class="author lang-zh">—— 张总 · 某制造集团</div>
+                    <div class="author lang-en">—— Mr. Zhang · Manufacturing Group</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="lang-zh">“智能控制柜帮助我们实现了产线自动化升级，效率提升30%。”</blockquote>
+                    <blockquote class="lang-en">"The smart control cabinet helped us automate our production line, increasing efficiency by 30%."</blockquote>
+                    <div class="author lang-zh">—— 李工 · 自动化公司</div>
+                    <div class="author lang-en">—— Eng. Li · Automation Co.</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="lang-zh">“精密轴承精度高，运转平稳，性价比突出。”</blockquote>
+                    <blockquote class="lang-en">"The precision bearings have high accuracy, smooth operation, and outstanding cost-effectiveness."</blockquote>
+                    <div class="author lang-zh">—— 王经理 · 机械加工厂</div>
+                    <div class="author lang-en">—— Manager Wang · Machine Shop</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 联系我们 ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title lang-zh">联系我们</h2>
+            <h2 class="section-title lang-en">Contact Us</h2>
+            <p class="section-sub lang-zh">欢迎咨询，我们将竭诚为您服务</p>
+            <p class="section-sub lang-en">Welcome to inquire, we are at your service</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 class="lang-zh">韩恒机电有限公司</h3>
+                    <h3 class="lang-en">Hanheng Electromechanical Co., Ltd.</h3>
+                    <div class="detail">
+                        <p><span class="lang-zh-block"><strong>地址</strong><br>温岭市大溪镇凯利达鞋业里2号楼</span><span class="lang-en-block"><strong>Address</strong><br>Building 2, Kailida Shoes, Daxi Town, Wenling City</span></p>
+                        <p><span class="lang-zh-block"><strong>电话</strong><br>15355868382</span><span class="lang-en-block"><strong>Phone</strong><br>15355868382</span></p>
+                        <p><span class="lang-zh-block"><strong>邮箱</strong><br>1576037018@qq.com</span><span class="lang-en-block"><strong>Email</strong><br>1576037018@qq.com</span></p>
+                        <p><strong class="lang-zh">联系人</strong><strong class="lang-en">Contact Person</strong><br>蔡建辉</p>
+                    </div>
+                    <!-- 地图 -->
+                    <div class="map-placeholder">
+                        <iframe 
+                            src="https://uri.amap.com/marker?position=121.349,28.462&name=韩恒机电" 
+                            allowfullscreen 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="您的姓名 *" required class="lang-zh" />
+                    <input type="text" placeholder="Your Name *" required class="lang-en" />
+                    <input type="email" placeholder="邮箱 *" required class="lang-zh" />
+                    <input type="email" placeholder="Email *" required class="lang-en" />
+                    <input type="tel" placeholder="电话" class="lang-zh" />
+                    <input type="tel" placeholder="Phone" class="lang-en" />
+                    <textarea placeholder="留言内容..." class="lang-zh"></textarea>
+                    <textarea placeholder="Your message..." class="lang-en"></textarea>
+                    <button type="submit" class="btn btn-primary lang-zh">提交留言</button>
+                    <button type="submit" class="btn btn-primary lang-en">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo lang-zh" style="color:#fff;"><svg class="logo-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/><circle cx="22" cy="22" r="16.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 13v18M29 13v18M15 22h14" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M20 28l-1.5 2.5h3L20 33" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/></svg>韩恒<span style="color:#007aff;">机电</span></div>
+            <div class="social">
+                <a href="#" class="lang-zh">微信</a>
+                <a href="#" class="lang-zh">微博</a>
+                <a href="#" class="lang-en">WeChat</a>
+                <a href="#" class="lang-en">Weibo</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p class="copy">© 2026 www.hanheng.xin · 韩恒机电有限公司</p>
+            <p class="copy lang-en">© 2026 www.hanheng.xin · Hanheng Electromechanical Co., Ltd.</p>
+        </div>
+    </footer>
+
+
+    <!-- ===== Product detail modal ===== -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalCloseBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+    <!-- ===== JavaScript ===== -->
+    <script>
+    (function() {
+        'use strict';
+
+        // ===== Product data from Excel =====
+        var products = [
+            {
+                id: 0,
+                nameCN: '\u76f4\u6d41\u6709\u5237\u6f5c\u6c34\u6cf5',
+                nameEN: 'Brushed DC Submersible Pump',
+                descCN: '\u9c7c\u7f38\u6362\u6c34\u3001\u5c0f\u578b\u55b7\u6cc9\u3001\u4e34\u65f6\u6392\u6c34\u3002\u7ecf\u6d4e\u5b9e\u7528\uff0c\u591a\u79cd\u7535\u538b\u53ef\u9009\u3002',
+                descEN: 'Fish tank, fountain, drainage. Cost-effective, multiple voltages.',
+                img: 'pump_images/prod_0.png',
+                variants: [
+                    { type: '12V/24V', flow: '5-8m\u00B3/h', head: '5m-8m', cable: '2.5m', price: '60 RMB', port: '1inch', notes: '2inch add8RMB' },
+                    { type: '12V/24V/48V/64V/72V', flow: '8-10 m\u00B3/h', head: '10m-18m', cable: '7m', price: '67 RMB', port: '1inch', notes: '2inch add8RMB' },
+                    { type: '12V/24V/48V/64V/72V', flow: '8-10 m\u00B3/h', head: '20m-30m', cable: '15m', price: '78 RMB', port: '1inch', notes: 'General-purpose' }
+                ]
+            },
+            {
+                id: 1,
+                nameCN: '\u76f4\u6d41\u65e0\u5237\u6f5c\u6c34\u6cf5',
+                nameEN: 'Brushless DC Submersible Pump',
+                descCN: '\u5730\u6696\u5faa\u73af\u3001\u592a\u9633\u80fd\u704c\u6e89\u3001\u6c7d\u8f66\u6563\u70ed\u3002\u9ad8\u6548\u8282\u80fd\uff0c\u957f\u5bff\u547d\u3002',
+                descEN: 'Floor heating, solar irrigation, heat dissipation. Efficient, long life.',
+                img: 'pump_images/prod_1.png',
+                variants: [
+                    { type: '48V/64V/72V', flow: '20 m\u00B3/h', head: '20m-30m', cable: '7m/15m', price: '168/180 RMB', port: '2.5inch 2inch', notes: '' },
+                    { type: '48V/64V/72V (Alloy Wire)', flow: '20 m\u00B3/h', head: '18m-22m', cable: '7m/15m', price: '133/145 RMB', port: '1inch 1.5inch2inch', notes: '' },
+                    { type: '12V/24V/48V/64V/72V (3-inch Feike)', flow: '18-20 m\u00B3/h', head: '18m-22m', cable: '7m', price: '275 RMB', port: '2.5inch 2inch', notes: 'RV/Barrel/Outdoor' }
+                ]
+            },
+            {
+                id: 2,
+                nameCN: '\u4e0d\u9508\u94a2\u65e0\u5237\u6f5c\u6c34\u6cf5',
+                nameEN: 'Brushless DC Stainless Steel',
+                descCN: '\u5149\u4f0f\u63d0\u6c34\u3001\u6df1\u5c42\u5730\u4e0b\u6c34\u3001\u5927\u89c4\u6a21\u704c\u6e89\u3002\u8010\u8150\u8680\uff0c\u575a\u56fa\u8010\u7528\u3002',
+                descEN: 'PV water lifting, deep groundwater, large-scale irrigation. Corrosion-resistant.',
+                img: 'pump_images/prod_2.png',
+                variants: [
+                    { type: '48V/64V/72V', flow: '20 m\u00B3/h', head: '18m-22m', cable: '7m/15m', price: '133/145 RMB', port: '1inch 1.5inch2inch', notes: '' }
+                ]
+            },
+            {
+                id: 3,
+                nameCN: '\u53cc\u7528\u9014\u6f5c\u6c34\u6cf5',
+                nameEN: 'Dual-purpose Submersible Pump',
+                descCN: '\u6c61\u6c34\u4e0e\u6e05\u6c34\u53cc\u7528\uff0c\u6c34\u57f9\u690d\u7269\u3001\u6a21\u578b\u51b7\u5374\u3001\u5fae\u7f29\u666f\u89c2\u3002',
+                descEN: 'Sewage & clean water. Hydroponics, model cooling, mini landscapes.',
+                img: 'pump_images/prod_3.png',
+                variants: [
+                    { type: '12V/24V/48V/64V/72V', flow: '8-10 m\u00B3/h', head: '8m-10m', cable: '7m', price: '100 RMB', port: '1inch 1.5inch2inch', notes: '' }
+                ]
+            },
+            {
+                id: 4,
+                nameCN: '\u6c38\u78c1\u8ff7\u4f60\u6f5c\u6c34\u6cf5',
+                nameEN: 'Permanent Magnet Mini Pump',
+                descCN: '\u83dc\u56ed\u6d47\u6c34\u3001\u571f\u5730\u704c\u6e89\u3001\u64ad\u79cd\u3002\u5c0f\u5de7\u4fbf\u643a\uff0c\u9ad8\u6548\u8010\u7528\u3002',
+                descEN: 'Garden watering, land irrigation, seeding. Compact, efficient, durable.',
+                img: 'pump_images/prod_4.png',
+                variants: [
+                    { type: '12V/24V (1-inch)', flow: '5-8 m\u00B3/h', head: '10m-18m', cable: '3m', price: '85 RMB', port: '1inch', notes: '' },
+                    { type: '48V/64V/72V (2-inch)', flow: '5-8 m\u00B3/h', head: '10m-18m', cable: '7m', price: '92 RMB', port: '2inch', notes: '' },
+                    { type: '12V/24V/48V/64V/72V (Red)', flow: '8-10 m\u00B3/h', head: '10m-22m', cable: '15m', price: '88 RMB', port: '1inch', notes: 'Heavy Duty 118 RMB' }
+                ]
+            },
+            {
+                id: 5,
+                nameCN: '\u65e0\u5237\u6df1\u4e95\u6f5c\u6c34\u6cf5',
+                nameEN: 'Brushless Deep Well Pump',
+                descCN: '\u6df1\u4e95\u63d0\u6c34\u3001\u704c\u6e89\u3002\u8d85\u9ad8\u626c\u7a0b\uff0c\u9002\u5408\u6df1\u5c42\u5730\u4e0b\u6c34\u62bd\u53d6\u3002',
+                descEN: 'Deep well lifting, irrigation. Ultra-high head for deep groundwater.',
+                img: 'pump_images/prod_5.png',
+                variants: [
+                    { type: '48V/64V (4 Blades)', flow: '18-20 m\u00B3/h', head: '60m-75m', cable: '15m', price: '200 RMB', port: '1inch 1.5inch2inch', notes: '' },
+                    { type: '48V/64V/72V (6 Blades)', flow: '18-20 m\u00B3/h', head: '20m-35m', cable: '15m', price: '225 RMB', port: '1inch 1.5inch2inch', notes: '' },
+                    { type: '12V/24V (2 Blades Brushed)', flow: '8-10 m\u00B3/h', head: '10m-18m', cable: '7m', price: '98 RMB', port: '1inch 1.5inch2inch', notes: '' }
+                ]
+            }
+        ];
+
+        function getCurrentLang() {
+            return document.documentElement.classList.contains('lang-en') ? 'en' : 'zh';
+        }
+
+        // ===== Modal logic =====
+        var modalOverlay = document.getElementById('productModal');
+        var modalBody = document.getElementById('modalBody');
+        var modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        function openProduct(idx) {
+            var p = products[idx];
+            if (!p) return;
+            var lang = getCurrentLang();
+            var name = lang === 'zh' ? p.nameCN : p.nameEN;
+            var desc = lang === 'zh' ? p.descCN : p.descEN;
+
+            var headingCN = '\u89c4\u683c\u53c2\u6570';
+            var headingEN = 'Specifications';
+            var specHeading = lang === 'zh' ? headingCN : headingEN;
+            var tHead = lang === 'zh'
+                ? '<tr><th>\u578b\u53f7</th><th>\u6d41\u91cf</th><th>\u626c\u7a0b</th><th>\u7535\u7f06</th><th>\u63a5\u53e3</th><th>\u4ef7\u683c</th></tr>'
+                : '<tr><th>Model</th><th>Flow</th><th>Head</th><th>Cable</th><th>Port</th><th>Price</th></tr>';
+
+            var rows = '';
+            for (var i = 0; i < p.variants.length; i++) {
+                var v = p.variants[i];
+                var noteHtml = v.notes ? '<div class="modal-extra-notes">' + v.notes + '</div>' : '';
+                rows += '<tr><td>' + v.type + '</td><td>' + v.flow + '</td><td>' + v.head + '</td><td>' + v.cable + '</td><td>' + v.port + '</td><td class="price-cell">' + v.price + '</td></tr>';
+            }
+
+            modalBody.innerHTML =
+                '<div class="modal-img-area"><img src="' + p.img + '" alt="' + name + '" class="modal-product-img" loading="lazy"></div>' +
+                '<h2>' + name + '</h2>' +
+                '<p class="modal-desc">' + desc + '</p>' +
+                '<table class="modal-variant-table"><thead>' + tHead + '</thead><tbody>' + rows + '</tbody></table>';
+
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== Event bindings =====
+        modalCloseBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Product card clicks
+        document.querySelectorAll('.product-card[data-product]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                var idx = parseInt(this.getAttribute('data-product'));
+                openProduct(idx);
+            });
+            card.style.cursor = 'pointer';
+        });
+
+        // ===== Language switch =====
+        function setLang(lang) {
+            if (lang === 'en') { document.documentElement.classList.add('lang-en'); }
+            else { document.documentElement.classList.remove('lang-en'); }
+            document.querySelectorAll('[class*="lang-"]').forEach(function(el) {
+                var cls = el.className;
+                var isZh = /\blang-zh\b/.test(cls) || /\blang-zh-block\b/.test(cls) || /\blang-zh-inline\b/.test(cls);
+                var isEn = /\blang-en\b/.test(cls) || /\blang-en-block\b/.test(cls) || /\blang-en-inline\b/.test(cls);
+                if (isZh === isEn) return;
+                el.style.display = (lang === 'zh' && isZh) || (lang === 'en' && isEn) ? '' : 'none';
+            });
+            document.title = lang === 'zh' ? '\u97e9\u6052\u673a\u7535\u6709\u9650\u516c\u53f8' : 'Hanheng Electromechanical Co., Ltd.';
+            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+            document.querySelectorAll('.lang-switch button').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            var inp = document.getElementById('searchInput');
+            if (inp) inp.placeholder = lang === 'zh' ? '\u641c\u7d22\u4ea7\u54c1\u2026' : 'Search products\u2026';
+        }
+
+        document.querySelectorAll('.lang-switch button').forEach(function(btn) {
+            btn.addEventListener('click', function() { setLang(this.dataset.lang); });
+        });
+        setLang('zh');
+
+        // ===== Hamburger =====
+        var hamburger = document.getElementById('hamburger');
+        var navLinks = document.getElementById('navLinks');
+        if (hamburger) {
+            hamburger.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+        }
+
+        // ===== Fade-in =====
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+        // ===== Search =====
+        var si = document.getElementById('searchInput');
+        var sb = document.getElementById('searchBtn');
+        if (si && sb) {
+            function doSearch() {
+                var q = si.value.trim().toLowerCase();
+                document.querySelectorAll('.product-card, .news-item').forEach(function(el) {
+                    el.style.display = (!q || el.textContent.toLowerCase().indexOf(q) >= 0) ? '' : 'none';
+                });
+            }
+            sb.addEventListener('click', doSearch);
+            si.addEventListener('keyup', function(e) { if (e.key === 'Enter') doSearch(); });
+        }
+
+        // ===== Contact form =====
+        var f = document.getElementById('contactForm');
+        if (f) {
+            f.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('\u611f\u8c22\u60a8\u7684\u7559\u8a00\uff01\u6211\u4eec\u4f1a\u5c3d\u5feb\u4e0e\u60a8\u8054\u7cfb\u3002\nThank you! We will contact you soon.');
+                this.reset();
+            });
+        }
+
+        // ===== Smooth scroll =====
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var id = this.getAttribute('href');
+                if (id === '#') return;
+                var t = document.querySelector(id);
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); if (navLinks) navLinks.classList.remove('open'); }
+            });
+        });
+    })();
+    </script>
+</body>
+<!-- rebuild: 1 -->`n</html>
